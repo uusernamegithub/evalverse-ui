@@ -60,6 +60,13 @@ const Quiz = () => {
       setQuestionsAnswered(next);
 
       if (next >= n) {
+        try {
+          const response = await fetch("http://localhost:5000/evalverse/mcq/reset", {
+            method: "POST",
+          });
+        } catch (error) {
+          console.error(error);
+        }
         navigate('/hr-question');
       } else {
         loadNextQuestion();
